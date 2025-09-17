@@ -28,13 +28,3 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
 }
-server {
-    listen 80;
-
-    if ($host = {{ domain_name }}) {
-        return 301 https://$host$request_uri;
-    }
-
-    server_name {{ domain_name }};
-    return 404;
-}

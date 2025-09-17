@@ -51,8 +51,7 @@
         certbot --nginx -n --agree-tos --redirect --email {{ email }} -d {{ domain_name }}
       when: 
         - not ssl_cert_exists.stat.exists
-      notify: Restart Nginx
-
+  
   handlers:
     - name: Restart Nginx
       service:
